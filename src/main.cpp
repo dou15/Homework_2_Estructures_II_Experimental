@@ -128,7 +128,8 @@ simulador de cache*/
 int main(int argc, char * argv []) {
 
 	//Mensaje inicio programa
-  printf("El programa simula una memoria cache asociatividad n, tipo write-allocate y write-back, soportando las politicas de reemplazo LRU, NRU y SRRIP(HP).\n");
+  	cout << "-----------------------------------------------------------" << endl;
+  printf("El programa simula una memoria cache asociatividad n, tipo write-allocate y write-back, soportando las politicas de reemplazo lru, nru y srriphp.\n");
 	cout << "-----------------------------------------------------------" << endl;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -217,7 +218,10 @@ SizeTag=32-SizeIndex-SizeOffset;
 	 AddressHex=TraceVector[2];
 	 IC=TraceVector[3];
  
-  
+   //Convierte el valor de load/store del trace a un número entero
+   bool IntLoadStore = stoi(LoadStore);
+   cout << IntLoadStore << endl;
+   
 /******************************************************************************/
 /*Convertir Dirección hexadecimal a binario*/
 /******************************************************************************/
@@ -253,6 +257,27 @@ if((ReplacementPolicy.compare(stprueba)) == 0){
   /* Print cache configuration */
 
   /* Print Statistics */
+  
+  cout << "_________________________________" << endl;
+  cout << "Cache parameters" << endl;
+  cout << "_________________________________" << endl;
+  cout << "Cache Size(KB): " << CacheSize/1024 << endl;
+  cout << "Cache Associativity: " << associativity << endl;
+  cout << "Cache Block Size(Bytes): " << CacheLineSize << endl; 
+  cout << "Replacement Policy: " << ReplacementPolicy << endl;
+  cout << "_________________________________" << endl;
+  cout << "Simulation results " << endl;
+  cout << "_________________________________" << endl;
+  cout << "OverallMissRate: " << OverallMissRate << endl;
+  cout << "ReadMissRate: " << ReadMissRate << endl;
+  cout << "DirtyEvictions: " << DirtyEvictions << endl;
+  cout << "LoadMisses: " << LoadMisses << endl;
+  cout << "StoreMisses: " << StoreMisses << endl;
+  cout << "TotalMisses: " << TotalMisses << endl;
+  cout << "LoadHits: " << LoadHits << endl;
+  cout << "StoreHits: " << StoreHits << endl;
+  cout << "TotalHits: " << TotalHits << endl;
+  cout << "_________________________________" << endl;
   cout << "los accesos totales son "<<accesos << endl;
 return 0;
 }
