@@ -178,16 +178,13 @@ SizeOffset => cantidad de bits del offset
 SizeIndex  => cantidad de bits del index
 SizaeTag   => cantidad de bits del tag
 */
-if(associativity!=1){
 SizeOffset=log2(CacheLineSize);     
 SizeIndex= log2(CacheSize) - (log2(associativity)+log2(CacheLineSize));
 SizeTag=32-SizeIndex-SizeOffset;
-}
-if(associativity==1){
-SizeOffset=log2(CacheLineSize);     
-SizeIndex= log2(CacheSize) - (1+log2(CacheLineSize));
-SizeTag=32-SizeIndex-SizeOffset;
-}
+
+cout << "offset " << SizeOffset << endl;
+cout << "index " << SizeIndex << endl;
+cout << "tag " << SizeTag << endl;
 
 /******************************************************************************/
 /* Get trace's lines and start your simulation */
@@ -220,7 +217,6 @@ SizeTag=32-SizeIndex-SizeOffset;
  
    //Convierte el valor de load/store del trace a un número entero
    bool IntLoadStore = stoi(LoadStore);
-   cout << IntLoadStore << endl;
    
 /******************************************************************************/
 /*Convertir Dirección hexadecimal a binario*/
